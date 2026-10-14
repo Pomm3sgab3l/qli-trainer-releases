@@ -19,7 +19,7 @@ Each epoch has exactly one release, tagged `ep<EPOCH>`. Direct links follow
 | `*-SS-<ver>` | as above, with SessionSync (fail-closed pubkey whitelist) | as above + `-SS` |
 
 `<ver>` is `<epoch>.<build>`, for example `235.0`. Only the newest build of each file is kept.
-Releases up to epoch 234 use the older per-platform tags.
+Files up to epoch 234 use the older names (`qli-worker-ANDROID32-SS-ep234` style).
 
 ## Verify before use
 

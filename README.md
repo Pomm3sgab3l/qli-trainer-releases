@@ -1,30 +1,32 @@
 # qli-trainer-releases
 
-Public download mirror for the **QLI pool trainer** worker binaries.
+Public download mirror for the **QLI pool trainer** worker binaries. This repository holds
+**release assets only**. The source is maintained in a separate private repository.
 
-This repository contains **release assets only** — no source code. The trainer
-source is maintained in a separate private repository. Binaries are published
-here per epoch so operators can download them over a public link.
+## Current epoch: 235
 
-## Download
+**[Release ep235](https://github.com/Pomm3sgab3l/qli-trainer-releases/releases/tag/ep235)**: all platforms in one release.
 
-Grab the asset for your architecture and epoch from the
-[Releases](https://github.com/Pomm3sgab3l/qli-trainer-releases/releases) page.
+Each epoch has exactly one release, tagged `ep<EPOCH>`. Direct links follow
+`https://github.com/Pomm3sgab3l/qli-trainer-releases/releases/download/ep<EPOCH>/<file>`.
 
-Asset naming: `qli-worker-<TARGET>-ep<EPOCH>` (+ a matching `.sha256`).
-
-| TARGET | Device | Notes |
+| File | Platform | Client run name |
 |---|---|---|
-| `ANDROID` | Android arm64-v8a | 64-bit phones/tablets |
-| `ANDROID32` | Android armeabi-v7a | old/low-end 32-bit tablets (Android 5.0+) |
-| `*-SS` | as above, with SessionSync | fetches + enforces the pool's dynamic authorised-pubkey whitelist (fail-closed) |
+| `win-cuda-pps-pom-<ver>.exe` | NVIDIA GPU, Windows x64 | `qli-worker-CUDA.exe` |
+| `linux-amd-pps-pom-<ver>` | AMD GPU, Linux x64 (ROCm 6.x) | `qli-worker-AMD` |
+| `qli-worker-ARM64-<ver>` | Android arm64-v8a | `qli-worker-ARM64` |
+| `qli-worker-ARMV7-<ver>` | Android armeabi-v7a (Android 5.0+) | `qli-worker-ARMV7` |
+| `*-SS-<ver>` | as above, with SessionSync (fail-closed pubkey whitelist) | as above + `-SS` |
+
+`<ver>` is `<epoch>.<build>`, for example `235.0`. Only the newest build of each file is kept.
+Releases up to epoch 234 use the older per-platform tags.
 
 ## Verify before use
 
-Every asset ships with a `.sha256`. After downloading both:
+Every file ships with a `.sha256`. Download both, then:
 
 ```bash
-sha256sum -c qli-worker-ANDROID32-SS-ep234.sha256
+sha256sum -c qli-worker-ARM64-235.0.sha256
 ```
 
 Only run a binary whose checksum matches.
